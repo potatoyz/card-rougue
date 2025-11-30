@@ -1,5 +1,7 @@
 # Feature Specification: [FEATURE NAME]
 
+<!-- IMPORTANT: All content filled in this template MUST be in Chinese (Simplified) as per Constitution Principle III. -->
+
 **Feature Branch**: `[###-feature-name]`  
 **Created**: [DATE]  
 **Status**: Draft  

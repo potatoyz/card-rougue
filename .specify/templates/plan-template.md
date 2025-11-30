@@ -1,5 +1,7 @@
 # Implementation Plan: [FEATURE]
 
+<!-- IMPORTANT: All content filled in this template MUST be in Chinese (Simplified) as per Constitution Principle III. -->
+
 **Branch**: `[###-feature-name]` | **Date**: [DATE] | **Spec**: [link]
 **Input**: Feature specification from `/specs/[###-feature-name]/spec.md`
 
