@@ -1,14 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8q6x4y2z1w3"]
+[gd_scene load_steps=2 format=3 uid="uid://b8q6x4y201w3"]
 
-[ext_resource type="Script" path="res://Scripts/UI/TimelineUI.gd" id="1_u4k2l"]
+[ext_resource type="Script" uid="uid://ggfuf7tnsl0h" path="res://Scripts/UI/TimelineUI.gd" id="1_u4k2l"]
 
 [node name="TimelineUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 583.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_u4k2l")
 
 [node name="HSlider" type="HSlider" parent="."]

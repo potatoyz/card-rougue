@@ -1,12 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7x8y9z0a1b2"]
+[gd_scene load_steps=6 format=3 uid="uid://c7x80a00a1b2"]
 
-[ext_resource type="Script" path="res://Scripts/Levels/TestLevel.gd" id="1_v3n4m"]
-[ext_resource type="Script" path="res://Scripts/Entities/Unit.gd" id="2_w5o6p"]
-[ext_resource type="PackedScene" uid="uid://b8q6x4y2z1w3" path="res://Scenes/UI/TimelineUI.tscn" id="3_x7q8r"]
-[ext_resource type="Texture2D" uid="uid://b8q6x4y2z1w3" path="res://icon.svg" id="4_icon"]
+[ext_resource type="Script" uid="uid://c05xf6uorxju3" path="res://Scripts/Levels/TestLevel.gd" id="1_v3n4m"]
+[ext_resource type="Script" uid="uid://b3qgvguxgf60q" path="res://Scripts/Entities/Unit.gd" id="2_w5o6p"]
+[ext_resource type="PackedScene" uid="uid://b8q6x4y201w3" path="res://Scenes/UI/TimelineUI.tscn" id="3_x7q8r"]
+[ext_resource type="Texture2D" uid="uid://dwjhfyn30lkkl" path="res://icon.svg" id="4_iuug4"]
+[ext_resource type="Script" uid="uid://dn816ff20wngw" path="res://Scripts/UI/Grid.gd" id="5_grid"]
 
 [node name="TestLevel" type="Node2D"]
 script = ExtResource("1_v3n4m")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.3590689, 0.35906917, 0.35906896, 1)
+
+[node name="Grid" type="Node2D" parent="."]
+script = ExtResource("5_grid")
 
 [node name="PlayerUnit" type="Node2D" parent="."]
 position = Vector2(100, 300)
@@ -14,13 +29,20 @@ script = ExtResource("2_w5o6p")
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerUnit"]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_icon")
+texture = ExtResource("4_iuug4")
 
-# Note: User needs to assign a texture or we use a placeholder color rect if no sprite.
-# But Unit.gd expects a Sprite2D. Let's add a ColorRect as a child or just rely on icon.svg if we can load it.
-# In a text scene, we can't easily load built-in resources without path.
-# Let's assume the user will fix the sprite or I can load "res://icon.svg" in script.
+[node name="EnemyUnit" type="Node2D" parent="."]
+position = Vector2(100, 500)
+script = ExtResource("2_w5o6p")
+unit_id = 2
+team = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="EnemyUnit"]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_iuug4")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TimelineUI" parent="CanvasLayer" instance=ExtResource("3_x7q8r")]
+offset_bottom = 1.0
