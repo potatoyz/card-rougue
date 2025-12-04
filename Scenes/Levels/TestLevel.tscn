@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7x8y9z0a1b2"]
+
+[ext_resource type="Script" path="res://Scripts/Levels/TestLevel.gd" id="1_v3n4m"]
+[ext_resource type="Script" path="res://Scripts/Entities/Unit.gd" id="2_w5o6p"]
+[ext_resource type="PackedScene" uid="uid://b8q6x4y2z1w3" path="res://Scenes/UI/TimelineUI.tscn" id="3_x7q8r"]
+[ext_resource type="Texture2D" uid="uid://b8q6x4y2z1w3" path="res://icon.svg" id="4_icon"]
+
+[node name="TestLevel" type="Node2D"]
+script = ExtResource("1_v3n4m")
+
+[node name="PlayerUnit" type="Node2D" parent="."]
+position = Vector2(100, 300)
+script = ExtResource("2_w5o6p")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerUnit"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_icon")
+
+# Note: User needs to assign a texture or we use a placeholder color rect if no sprite.
+# But Unit.gd expects a Sprite2D. Let's add a ColorRect as a child or just rely on icon.svg if we can load it.
+# In a text scene, we can't easily load built-in resources without path.
+# Let's assume the user will fix the sprite or I can load "res://icon.svg" in script.
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TimelineUI" parent="CanvasLayer" instance=ExtResource("3_x7q8r")]

@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8q6x4y2z1w3"]
+
+[ext_resource type="Script" path="res://Scripts/UI/TimelineUI.gd" id="1_u4k2l"]
+
+[node name="TimelineUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u4k2l")
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -56.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Time: 0.00"
+horizontal_alignment = 1
