@@ -5,8 +5,6 @@ description: "Task list template for feature implementation"
 
 # Tasks: [FEATURE NAME]
 
-<!-- IMPORTANT: All content filled in this template MUST be in Chinese (Simplified) as per Constitution Principle III. -->
-
 **Input**: Design documents from `/specs/[###-feature-name]/`
 **Prerequisites**: plan.md (required), spec.md (required for user stories), research.md, data-model.md, contracts/
 

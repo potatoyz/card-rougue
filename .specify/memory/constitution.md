@@ -1,46 +1,50 @@
-<!--
-Sync Impact Report:
-- Version Change: [Template] -> 1.0.0 (Initial Ratification)
-- Principles Established:
-  - I. GDScript First
-  - II. Code Standards & Style
-  - III. Chinese Documentation
-  - IV. Card Roguelike Core
-  - V. Testability & Quality
-- Template Updates:
-  - .specify/templates/plan-template.md (⚠ pending language instruction)
-  - .specify/templates/spec-template.md (⚠ pending language instruction)
-  - .specify/templates/tasks-template.md (⚠ pending language instruction)
--->
-# CardRougue Constitution
+# [PROJECT_NAME] Constitution
+<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
 
 ## Core Principles
 
-### I. GDScript First
-The project is built using GDScript. Use static typing (`:=`, `->`) wherever possible to ensure type safety and performance.
+### [PRINCIPLE_1_NAME]
+<!-- Example: I. Library-First -->
+[PRINCIPLE_1_DESCRIPTION]
+<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
 
-### II. Code Standards & Style
-Adhere to the official GDScript style guide. Code must be clean, readable, and idiomatic. File headers must include copyright information: `# Copyright (c) potato`.
+### [PRINCIPLE_2_NAME]
+<!-- Example: II. CLI Interface -->
+[PRINCIPLE_2_DESCRIPTION]
+<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
 
-### III. Chinese Documentation (MANDATORY)
-All documentation, including Specifications (Spec), Plans, and Tasks, MUST be written in Chinese (Simplified). Code comments should be concise and can be in English or Chinese, but documentation files are strictly Chinese.
+### [PRINCIPLE_3_NAME]
+<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
+[PRINCIPLE_3_DESCRIPTION]
+<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
 
-### IV. Card Roguelike Core
-The game design follows standard Roguelike Deckbuilder mechanics. Features should be modular (Cards, Enemies, Relics) to support the genre's extensibility.
+### [PRINCIPLE_4_NAME]
+<!-- Example: IV. Integration Testing -->
+[PRINCIPLE_4_DESCRIPTION]
+<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
 
-### V. Testability & Quality
-Although a game, logic should be separated from presentation where possible to allow for unit testing (using a framework like GUT if applicable, or ad-hoc tests).
+### [PRINCIPLE_5_NAME]
+<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
+[PRINCIPLE_5_DESCRIPTION]
+<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
 
-## Development Workflow
+## [SECTION_2_NAME]
+<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
 
-All features follow the Specify -> Plan -> Implement cycle. All documentation artifacts generated in this cycle must correspond to Principle III (Chinese Language).
+[SECTION_2_CONTENT]
+<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
 
-## Quality Gates
+## [SECTION_3_NAME]
+<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
 
-Code reviews must verify adherence to GDScript typing and copyright headers. Documentation reviews must verify the use of Chinese language.
+[SECTION_3_CONTENT]
+<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
 
 ## Governance
+<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-This Constitution is the supreme law of the project. Amendments require documentation, approval, and a version bump.
+[GOVERNANCE_RULES]
+<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
 
-**Version**: 1.0.0 | **Ratified**: 2025-11-30 | **Last Amended**: 2025-11-30
+**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
+<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
