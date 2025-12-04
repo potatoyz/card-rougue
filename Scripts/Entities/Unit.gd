@@ -34,3 +34,20 @@ func execute_action(action: CombatAction):
 func set_preview_state(state: Dictionary):
 	if state.has("position"):
 		global_position = state["position"]
+
+# Combat Stats
+@export var max_health: int = 100
+@onready var health: int = max_health
+
+signal died(unit)
+
+func take_damage(amount: int):
+	health -= amount
+	print("Unit %d took %d damage. Health: %d/%d" % [unit_id, amount, health, max_health])
+	if health <= 0:
+		die()
+
+func die():
+	print("Unit %d died!" % unit_id)
+	emit_signal("died", self)
+	queue_free()

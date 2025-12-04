@@ -7,6 +7,8 @@ var current_time: float = 0.0
 var is_planning: bool = true
 var turn_duration: float = 5.0 # Standard turn length in seconds
 
+const AttackAction = preload("res://Scripts/Resources/AttackAction.gd")
+
 # Signals
 signal time_changed(new_time)
 signal action_added(action)
@@ -59,8 +61,54 @@ func _process(delta):
 		# Execute actions that start now? 
 		# Or just let the Units update themselves based on time?
 		# For MVP, let's just stop at turn_duration
+		# Execute actions
+		_process_combat_logic(delta)
+		
 		if current_time >= turn_duration:
 			is_planning = true
 			set_process(false)
 			current_time = 0.0
 			emit_signal("time_changed", 0.0)
+
+func _process_combat_logic(delta):
+	# Check for attacks that should hit this frame
+	# For MVP, we check if current_time is within the "Active" window of an attack
+	# To avoid double hits, we could track processed attacks or just hit once per action
+	for action in actions:
+		if action is AttackAction:
+			var attack = action as AttackAction
+			var impact_time = attack.start_time + attack.startup_time
+			
+			# Simple check: if we just passed the impact time
+			if current_time >= impact_time and (current_time - delta) < impact_time:
+				_execute_attack_hit(attack)
+
+func _execute_attack_hit(attack: AttackAction):
+	print("Executing Attack at %.2f" % current_time)
+	# Find target unit
+	# For MVP, we iterate all units and check distance
+	# In real game, we use PhysicsServer or Area2D
+	
+	var attacker = _get_unit_by_id(attack.unit_id)
+	if not attacker:
+		return
+		
+	var target_pos = attack.target_position
+	
+	# Get all units
+	var units = get_tree().get_nodes_in_group("units")
+	for unit in units:
+		if unit.unit_id == attack.unit_id:
+			continue # Don't hit self
+			
+		# Check distance to target position (AoE) or unit position
+		var dist = unit.global_position.distance_to(target_pos)
+		if dist <= attack.hitbox_radius:
+			unit.take_damage(attack.damage)
+
+func _get_unit_by_id(id: int) -> Unit:
+	var units = get_tree().get_nodes_in_group("units")
+	for unit in units:
+		if unit.unit_id == id:
+			return unit
+	return null

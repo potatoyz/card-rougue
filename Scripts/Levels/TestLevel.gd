@@ -4,6 +4,8 @@ extends Node2D
 @onready var enemy_unit = $EnemyUnit
 @onready var timeline_ui = $CanvasLayer/TimelineUI
 
+const AttackAction = preload("res://Scripts/Resources/AttackAction.gd")
+
 func _ready():
 	# Initialize units
 	player_unit.unit_id = 1
@@ -11,6 +13,8 @@ func _ready():
 	
 	enemy_unit.unit_id = 2
 	enemy_unit.speed = 50.0
+	
+	enemy_unit.connect("died", _on_enemy_died)
 	
 	# Create a preset action for enemy to move left
 	_create_enemy_action()
@@ -70,3 +74,23 @@ func _unhandled_input(event):
 	if event is InputEventKey and event.pressed and event.keycode == KEY_SPACE:
 		print("Playing Turn...")
 		TimelineManager.play_turn()
+
+	if event is InputEventKey and event.pressed and event.keycode == KEY_A:
+		# Create an attack action
+		var action = AttackAction.new()
+		action.unit_id = player_unit.unit_id
+		action.start_time = 1.0 # Attack at t=1.0
+		action.target_position = get_global_mouse_position()
+		action.damage = 50
+		
+		TimelineManager.add_action(action)
+		print("Added Attack Action at t=1.0")
+
+func _on_enemy_died(unit):
+	print("VICTORY! Enemy unit %d defeated." % unit.unit_id)
+	
+	var label = Label.new()
+	label.text = "VICTORY!"
+	label.add_theme_font_size_override("font_size", 64)
+	label.position = Vector2(400, 300)
+	add_child(label)
